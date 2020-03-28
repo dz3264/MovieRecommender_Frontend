@@ -81,7 +81,7 @@ class SearchBar extends React.Component{
             </div>
 
             <div className="SearchBtn SearchDetail">
-                <Button variant="light" onClick={()=>this.props.searchMovie()}>Search</Button>
+                <Button variant="light" onClick={()=>this.props.searchMovie(1)}>Search</Button>
 
             </div>
 

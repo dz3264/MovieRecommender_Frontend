@@ -7,7 +7,7 @@ import MoviesRecommendation from "./pages/MoviesRecommendation";
 import MoviesSearch from "./pages/MoviesSearch";
 import UserPage from "./pages/UserPage";
 import Footer from "./components/Footer";
-import PageTurning from "./components/PageTurning";
+import Pagination from "./components/PageNumbers";
 
 class App extends React.Component{
 
@@ -40,7 +40,7 @@ class App extends React.Component{
             <Header/>
             <Selections select={this.state.current} change={this.changePage}/>
             {page}
-            <PageTurning/>
+
             <Footer/>
 
         </div>;

@@ -52,8 +52,8 @@ class MovieThumb extends React.Component{
 
         return <div className="Moviethumb" style={{backgroundImage: `url(${background})`}}>
             <div className="MovieInfo">
-                <div className="title">{this.state.movie['title'].split("(")[0]}</div>
-                <div className="release_date">{this.state.movie['release_date']}</div>
+                <div className="title">{this.props.movie['title'].split("(")[0]}</div>
+                <div className="release_date">{this.props.movie['release_date']}</div>
             </div>
 
         </div>;

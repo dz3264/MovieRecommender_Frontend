@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Page.css';
 import '../styles/Component.css'
 import MovieThumb from "../components/MovieThumb";
+import PageNumbers from "../components/PageNumbers";
 
 
 class MoviesRecommendation extends React.Component{
@@ -12,12 +13,25 @@ class MoviesRecommendation extends React.Component{
             isLoaded: false,
             movies: [],
             current_count: 0,
-            total_count: 0
+            total_count: 0,
+            page_curr: 1,
         };
+
+        this.changePage = this.changePage.bind(this);
+        this.fetchMovie = this.fetchMovie.bind(this);
+    }
+
+    changePage(p){
+        this.fetchMovie(p);
     }
 
     componentDidMount() {
-        fetch("/api/movies?page=1&sort=-popularity")
+        this.fetchMovie(1);
+    }
+
+    fetchMovie(p){
+        console.log('/api/movies?page='+p+'&sort=-popularity&limit=60');
+        fetch("/api/movies?page="+p+"&sort=-popularity&limit=60")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -26,10 +40,11 @@ class MoviesRecommendation extends React.Component{
                         isLoaded: true,
                         movies: result.data,
                         current_count: result.current_count,
-                        total_count: result.total_count
-
+                        total_count: result.total_count,
+                        page_curr: p
                     });
-                    this.forceUpdate();
+
+                    //this.forceUpdate();
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -43,9 +58,10 @@ class MoviesRecommendation extends React.Component{
                 }
             )
     }
-    render() {
 
+    render() {
         let moviesList = [];
+        let pageNum = this.state.current_count !== 0 ? Math.ceil(this.state.total_count/60) : 0 ;
 
         for (var i = 0; i < this.state.current_count; i++) {
             moviesList.push(<MovieThumb movie={this.state.movies[i]} />);
@@ -57,7 +73,7 @@ class MoviesRecommendation extends React.Component{
             <div className="MovieList">
                 {moviesList}
             </div>
-
+            <PageNumbers changePage={this.changePage} curr={this.state.page_curr} last={pageNum}/>
         </div>;
     }
 

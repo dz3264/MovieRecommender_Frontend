@@ -3,6 +3,7 @@ import '../styles/Page.css';
 import '../styles/Component.css'
 import SearchBar from "../components/SearchBar";
 import MovieThumb from "../components/MovieThumb";
+import PageNumbers from "../components/PageNumbers";
 
 class MoviesSearch extends React.Component{
 
@@ -13,13 +14,21 @@ class MoviesSearch extends React.Component{
             genreShow:"All",
             genre:"",
             sortShow:"Popularity",
-            sort: "-popularity"
+            sort: "-popularity",
+            current_count: 0,
+            total_count: 0,
+            page_curr: 1,
         };
 
         this.searchMovie = this.searchMovie.bind(this);
         this.selectGenre = this.selectGenre.bind(this);
         this.changeSort = this.changeSort.bind(this);
         this.searchInput = this.changeSort.bind(this);
+        this.changePage = this.changePage.bind(this);
+    }
+
+    changePage(p){
+        this.searchMovie(p);
     }
 
     selectGenre(gShow, g){
@@ -40,10 +49,10 @@ class MoviesSearch extends React.Component{
         alert('change input')
     }
 
-    searchMovie() {
+    searchMovie(p) {
 
-        console.log('/api/movies?page=1&sort='+this.state.sort+'&genre='+this.state.genre);
-        fetch("/api/movies?page=1&sort="+this.state.sort+"&genre="+this.state.genre)
+        //console.log('/api/movies?limit=60&page='+this.state.page_curr+'&sort='+this.state.sort+'&genre='+this.state.genre);
+        fetch('/api/movies?limit=60&page='+p+'&sort='+this.state.sort+'&genre='+this.state.genre)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -71,8 +80,8 @@ class MoviesSearch extends React.Component{
     }
 
     render() {
-        console.log('render');
 
+        let pageNum = this.state.current_count !== 0 ? Math.ceil(this.state.total_count/60) : 0 ;
         let moviesList;
         if (this.state.movies.length === 0){
             moviesList = <div> Search For Movies!</div>
@@ -83,7 +92,7 @@ class MoviesSearch extends React.Component{
                 moviesList.push(<MovieThumb movie={this.state.movies[i]} />);
             }
         }
-        console.log(moviesList);
+        //console.log(moviesList);
         return <div className="Search Page">
             <SearchBar
                 genreShow={this.state.genreShow}
@@ -96,7 +105,7 @@ class MoviesSearch extends React.Component{
             <div className='MovieList'>
                 {moviesList}
             </div>
-
+            <PageNumbers changePage={this.changePage} curr={this.state.page_curr} last={pageNum}/>
 
         </div>;
     }

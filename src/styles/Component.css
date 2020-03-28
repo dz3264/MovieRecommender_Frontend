@@ -16,13 +16,54 @@
     align-items:center;
 }
 
-/************* Pageturning *************/
-.Pageturning{
+/************* PageNumbers *************/
+.PageNumbers{
     width: 100vw;
     height: 100px;
     color: white;
     display: flex;
     justify-content:center;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    text-decoration:underline
+}
+
+.page-item.disabled .page-link {
+    z-index: 3;
+    color: #6f798f;
+    background-color: transparent;
+    border: none;
+}
+
+.page-link:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    text-decoration:underline
+}
+
+.page-link:focus {
+    z-index: 3;
+    outline: none;
+    box-shadow: none;
 }
 
 
@@ -36,6 +77,11 @@
 
 .SelectBtn{
     width: 100px;
+}
+
+.btn:focus{
+    outline: 0;
+    box-shadow: none;
 }
 
 .ButtonGroup{
