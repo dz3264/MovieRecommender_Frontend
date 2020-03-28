@@ -1,0 +1,132 @@
+/************* Header *************/
+.Header{
+     width: 100vw;
+     padding-bottom: 40%;
+     background: lavenderblush;
+ }
+
+/************* Footer *************/
+.Footer{
+    width: 100vw;
+    height: 100px;
+    background: #20242c;
+    color: white;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/************* Pageturning *************/
+.Pageturning{
+    width: 100vw;
+    height: 100px;
+    color: white;
+    display: flex;
+    justify-content:center;
+}
+
+
+/************* Selections *************/
+.Selections{
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content:center;
+}
+
+.SelectBtn{
+    width: 100px;
+}
+
+.ButtonGroup{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.SelectBtn {
+    outline: none !important;
+}
+
+/************* SearchBar *************/
+.Searchbar{
+    margin-top: 2%;
+    margin-bottom: 3%;
+    width: 80vw;
+    height: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content:space-around;
+}
+
+.SearchDetail{
+    display: flex;
+    width: 280px;
+    height: 100%;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.SearchDetail .dropdown-toggle {
+    white-space: nowrap;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Genre .dropdown-menu.show {
+    display: block;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.Input .form-group {
+    margin-bottom: 0;
+}
+
+.SearchBtn .btn-light{
+    width: 150px;
+}
+
+
+/************* Movie List *************/
+.MovieList{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    height: 100%;
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/*
+.MovieList::after {
+    content: "";
+    flex: auto;
+}
+ */
+
+/************* Movie Thumb *************/
+.Moviethumb{
+    margin: 20px 15px 15px 15px;
+    height: 300px;
+    width: 200px;
+    background: lavender;
+    display: flex;
+    align-items: flex-end;
+}
+.MovieInfo{
+    color: white;
+    width: 100%;
+    height: 35%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
