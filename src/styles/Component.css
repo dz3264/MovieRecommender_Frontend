@@ -1,11 +1,11 @@
-/************* Header *************/
+/********************************** Header **********************************/
 .Header{
      width: 100vw;
      padding-bottom: 40%;
      background: lavenderblush;
  }
 
-/************* Footer *************/
+/********************************** Footer **********************************/
 .Footer{
     width: 100vw;
     height: 100px;
@@ -16,7 +16,7 @@
     align-items:center;
 }
 
-/************* PageNumbers *************/
+/********************************** PageNumbers **********************************/
 .PageNumbers{
     width: 100vw;
     height: 100px;
@@ -67,7 +67,7 @@
 }
 
 
-/************* Selections *************/
+/********************************** Selections **********************************/
 .nav {
     display: flex;
     justify-content: space-evenly;
@@ -96,7 +96,7 @@
     box-shadow: none!important;
 }
 
-/************* SearchBar *************/
+/********************************** SearchBar **********************************/
 .Searchbar{
     margin-top: 2%;
     margin-bottom: 3%;
@@ -156,7 +156,7 @@
 }
  */
 
-/************* Movie Thumb *************/
+/********************************** Movie Thumb **********************************/
 .Moviethumb{
     margin: 20px 15px 15px 15px;
     height: 300px;
@@ -169,6 +169,7 @@
 
 .Moviethumb:hover {
     transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    cursor: pointer;
 }
 
 
@@ -187,6 +188,10 @@
     outline: 0;
     box-shadow: none!important;
 }
+.title{
+    font-weight: bold;
+}
+/********************************** Movie Details **********************************/
 
 .Moviedetails{
     display: flex;
@@ -212,4 +217,7 @@
 .tagline{
     margin-bottom: 3vh;
     font-style: italic;
+}
+.Rating{
+    margin-top: 3vh;
 }

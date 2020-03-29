@@ -3,7 +3,9 @@ import '../styles/Component.css';
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import Table from "react-bootstrap/Table";
-import MovieThumb from "../components/MovieThumb";
+import Rating from "react-rating";
+import star_full from '../asset/star_full.png';
+import star_empty from '../asset/star_empty.png';
 
 
 class MovieDetails extends React.Component{
@@ -11,7 +13,15 @@ class MovieDetails extends React.Component{
         super(props);
         this.state = {
             show : true,
+            rating: 0,
         };
+        this.changeRating = this.changeRating.bind(this);
+    }
+
+    changeRating(e){
+        this.setState({
+            rating:e
+        })
     }
 
     componentDidMount() {
@@ -24,7 +34,7 @@ class MovieDetails extends React.Component{
                     this.setState({
                         averageRating: rating,
                     });
-                    console.log(result);
+                    //console.log(result);
                 },
                 (error) => {
                     console.log('error here: ',error);
@@ -109,12 +119,28 @@ class MovieDetails extends React.Component{
                             </tr>
                             </tbody>
                         </Table>
-                        {this.props.details['overview'] ?
-                            <div className='overview'>{this.props.details['overview']}</div>
+
+                        <div className='overview'>{this.props.details['overview'] ?
+                            this.props.details['overview']
                             : null}
+                        </div>
+                        <div className='Rating'>
+                            <div>Your Rating: </div>
+                            <Rating
+                                initialRating={this.state.rating}
+                                fractions={2}
+                                onClick={(e)=>{this.changeRating(e)}}
+                                emptySymbol={<img style={{width:'40px', height:'40px', margin:'5px'}} src={star_empty} className="icon" />}
+                                fullSymbol={<img style={{width:'40px', height:'40px',margin:'5px'}} src={star_full} className="icon" />}
+                            />
+                        </div>
+
                     </div>
                     <div>
-                        <Image className='Detailposter' src={'http://image.tmdb.org/t/p/w500/'+this.props.poster} alt={'Movie Poster Unavailable'} rounded />
+                        <Image
+                            className='Detailposter'
+                            src={'http://image.tmdb.org/t/p/w500/'+this.props.poster}
+                            alt={'Movie Poster Unavailable'} rounded />
                     </div>
 
                 </Modal.Body>

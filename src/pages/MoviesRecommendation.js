@@ -3,7 +3,6 @@ import '../styles/Page.css';
 import '../styles/Component.css'
 import MovieThumb from "../components/MovieThumb";
 import PageNumbers from "../components/PageNumbers";
-import MovieDetails from "./MovieDetails";
 
 
 class MoviesRecommendation extends React.Component{
