@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Component.css';
+import MovieDetails from "../pages/MovieDetails";
 
 
 class MovieThumb extends React.Component{
@@ -7,10 +8,16 @@ class MovieThumb extends React.Component{
         super(props);
         this.state = {
             movie : this.props.movie,
+            showDetails: false,
         };
 
         this.fetchPoster = this.fetchPoster.bind(this);
+        this.setShow = this.setShow.bind(this);
 
+    }
+
+    setShow(s){
+        this.setState({showDetails: s});
     }
 
     componentDidMount() {
@@ -31,7 +38,7 @@ class MovieThumb extends React.Component{
                 (result) => {
                     this.setState({
                         poster: result.poster_path,
-
+                        tmdbDetails: result,
                     });
                 },
                 (error) => {
@@ -49,13 +56,21 @@ class MovieThumb extends React.Component{
 
         //let background = 'http://image.tmdb.org/t/p/w200/'+this.state.movie['background'];
         let background = 'http://image.tmdb.org/t/p/w200/'+this.state.poster;
+        //console.log(this.props.movie);
+        return <div
+            className="Moviethumb"
+            style={{backgroundImage: `url(${background})`}}
+            onClick={()=>this.setShow(true)} >
 
-        return <div className="Moviethumb" style={{backgroundImage: `url(${background})`}}>
-            <div className="MovieInfo">
+            <div className="MovieInfo" >
                 <div className="title">{this.props.movie['title'].split("(")[0]}</div>
                 <div className="release_date">{this.props.movie['release_date']}</div>
             </div>
-
+            {this.state.showDetails ?
+                <MovieDetails
+                movie={this.props.movie}
+                details={this.state.tmdbDetails}
+                poster={this.state.poster}/> : null}
         </div>;
     }
 

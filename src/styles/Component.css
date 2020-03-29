@@ -68,33 +68,32 @@
 
 
 /************* Selections *************/
-.Selections{
-    width: 100vw;
-    height: 80px;
+.nav {
     display: flex;
-    justify-content:center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    list-style: none;
+}
+.nav-tabs .nav-link {
+    color: white;
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    width: 10%;
 }
 
-.SelectBtn{
-    width: 100px;
-}
-
-.btn:focus{
+.nav-tabs.focus, .nav-tabs:focus {
     outline: 0;
-    box-shadow: none;
+    box-shadow: none!important;
 }
 
-.ButtonGroup{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items:center;
-    justify-content:space-around;
-}
 
-.SelectBtn {
-    outline: none !important;
+.nav-link.focus, .nav-link:focus {
+    outline: 0;
+    box-shadow: none!important;
 }
 
 /************* SearchBar *************/
@@ -182,4 +181,35 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+
+.close.focus, .close:focus {
+    outline: 0;
+    box-shadow: none!important;
+}
+
+.Moviedetails{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+}
+
+.Detailinfo{
+    width: 40vw;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+.Detailposter {
+    width: auto;
+    height: 75vh;
+}
+.tagline{
+    margin-bottom: 3vh;
+    font-style: italic;
 }

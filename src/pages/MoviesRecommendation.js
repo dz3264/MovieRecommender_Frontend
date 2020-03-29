@@ -3,6 +3,7 @@ import '../styles/Page.css';
 import '../styles/Component.css'
 import MovieThumb from "../components/MovieThumb";
 import PageNumbers from "../components/PageNumbers";
+import MovieDetails from "./MovieDetails";
 
 
 class MoviesRecommendation extends React.Component{
@@ -15,6 +16,7 @@ class MoviesRecommendation extends React.Component{
             current_count: 0,
             total_count: 0,
             page_curr: 1,
+
         };
 
         this.changePage = this.changePage.bind(this);
@@ -74,6 +76,7 @@ class MoviesRecommendation extends React.Component{
                 {moviesList}
             </div>
             <PageNumbers changePage={this.changePage} curr={this.state.page_curr} last={pageNum}/>
+
         </div>;
     }
 
