@@ -38,6 +38,12 @@ class Registration extends React.Component{
                         userhistory: response.data.userhistory,
                         usertags: response.data.usertags
                     });
+                    this.props.userStatus({
+                        userid: response.data.userid,
+                        name: response.data.username,
+                        userhistory: response.data.userhistory,
+                        usertags: response.data.usertags
+                    });
                     console.log(
                         response.data.userid,
                         response.data.username,
@@ -75,7 +81,7 @@ class Registration extends React.Component{
                     placeholder='Password Confirmation'
                     value={this.state.password_confirmation}
                     onChange={this.handleChang}/>
-                <button type={'button'} onClick={this.register}>Register</button>
+                <button type={'button'} onClick={this.register}>Sign Up</button>
             </form>
         </div>;
     }

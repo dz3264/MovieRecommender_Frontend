@@ -8,14 +8,13 @@ class Login extends React.Component{
         this.state = {
             name:'',
             password:'',
-            password_confirmation: '',
             registrationErrors: ''
         };
-        this.register = this.register.bind(this);
+        this.login = this.login.bind(this);
         this.handleChang = this.handleChang.bind(this);
 
     }
-    register() {
+    login() {
         console.log("Form submitted");
         if (this.state.name === '') {
             console.log('Please enter a user name');
@@ -30,6 +29,12 @@ class Login extends React.Component{
             )
                 .then(response => {
                     this.setState({
+                        userid: response.data.userid,
+                        name: response.data.username,
+                        userhistory: response.data.userhistory,
+                        usertags: response.data.usertags
+                    });
+                    this.props.userStatus({
                         userid: response.data.userid,
                         name: response.data.username,
                         userhistory: response.data.userhistory,
@@ -66,7 +71,7 @@ class Login extends React.Component{
                     placeholder='Password'
                     value={this.state.password}
                     onChange={this.handleChang}/>
-                <button type={'button'} onClick={this.register}>Login</button>
+                <button type={'button'} onClick={this.login}>Login</button>
             </form>
         </div>;
     }

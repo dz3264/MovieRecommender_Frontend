@@ -1,8 +1,8 @@
 /********************************** Header **********************************/
 .Header{
-     width: 100vw;
-     padding-bottom: 40%;
-     background: lavenderblush;
+    width: 100vw;
+    min-height: 75vh;
+    background: lavenderblush;
  }
 
 /********************************** Footer **********************************/
@@ -83,6 +83,7 @@
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     width: 10%;
+    min-width: 80px;
 }
 
 .nav-tabs.focus, .nav-tabs:focus {
@@ -138,7 +139,7 @@
 }
 
 
-/************* Movie List *************/
+/********************************** Movie List **********************************/
 .MovieList{
     margin-top: 2%;
     margin-bottom: 5%;
