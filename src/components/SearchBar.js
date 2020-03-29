@@ -70,7 +70,7 @@ class SearchBar extends React.Component{
                 </Dropdown>
 
             </div>
-
+            {/*
             <div className="Input SearchDetail">
                 <Form>
                     <Form.Group>
@@ -79,6 +79,8 @@ class SearchBar extends React.Component{
                 </Form>
 
             </div>
+            */}
+
 
             <div className="SearchBtn SearchDetail">
                 <Button variant="light" onClick={()=>this.props.searchMovie(1)}>Search</Button>

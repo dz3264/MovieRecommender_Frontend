@@ -111,11 +111,11 @@ class MovieDetails extends React.Component{
                             </tr>
                             <tr>
                                 <td>TMDB Vote</td>
-                                <td>{this.props.details['vote_average']}</td>
+                                <td>{this.props.details['vote_average']} / 10</td>
                             </tr>
                             <tr>
                                 <td>User Ratings</td>
-                                <td>{this.state.averageRating}</td>
+                                <td>{this.state.averageRating} / 5.0</td>
                             </tr>
                             </tbody>
                         </Table>
