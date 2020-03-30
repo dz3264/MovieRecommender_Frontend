@@ -16,7 +16,7 @@ class App extends React.Component{
         super();
         this.state = {
             loggedInStatus: JSON.parse(localStorage.getItem('loggedInStatus')) || false,
-            user: JSON.parse(localStorage.getItem('user')) || {}
+            user: JSON.parse(localStorage.getItem('user')) || {},
         };
 
         this.userStatus = this.userStatus.bind(this);
@@ -59,7 +59,10 @@ class App extends React.Component{
         return <div className="App">
             <Header/>
 
-            <Tabs defaultActiveKey="recommend" id="uncontrolled-tab-example">
+            <Tabs
+                defaultActiveKey="recommend"
+                id="uncontrolled-tab-example"
+            >
                 <Tab eventKey="recommend" title="For You">
                     <MoviesRecommendation
                         loggedInStatus={this.state.loggedInStatus}
@@ -71,11 +74,15 @@ class App extends React.Component{
                         user={this.state.user}
                     />
                 </Tab>
-                <Tab eventKey="user" title="User" >
+                <Tab eventKey="user"
+                     title="User"
+                     unmountOnExit={true}
+                     >
                     <UserPage
                         loggedInStatus={this.state.loggedInStatus}
                         user={this.state.user}
-                        userStatus={this.userStatus}/>
+                        userStatus={this.userStatus}
+                        />
                 </Tab>
             </Tabs>
 

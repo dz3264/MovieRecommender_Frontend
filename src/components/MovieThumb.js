@@ -17,6 +17,7 @@ class MovieThumb extends React.Component{
     }
 
     setShow(s){
+        //console.log('show details');
         this.setState({showDetails: s});
     }
 
@@ -52,7 +53,6 @@ class MovieThumb extends React.Component{
     }
 
     render() {
-        //console.log(this.state.poster);
 
         //let background = 'http://image.tmdb.org/t/p/w200/'+this.state.movie['background'];
         let background = 'http://image.tmdb.org/t/p/w200/'+this.state.poster;

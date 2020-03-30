@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Component.css';
 import axios from 'axios';
+import Button from "react-bootstrap/Button";
 
 class Registration extends React.Component{
     constructor(props) {
@@ -62,26 +63,29 @@ class Registration extends React.Component{
     }
 
     render() {
-        return <div className="Registration">
-            <form >
+        return <div className="Registration left_col">
+            <form className="myForm">
                 <input
+                    className='myInput'
                     name="name"
                     placeholder='Your Name'
                     value={this.state.name}
                     onChange={this.handleChang}/>
                 <input
+                    className='myInput'
                     type={'password'}
                     name="password"
                     placeholder='Password'
                     value={this.state.password}
                     onChange={this.handleChang}/>
                 <input
+                    className='myInput'
                     type={'password'}
                     name="password_confirmation"
                     placeholder='Password Confirmation'
                     value={this.state.password_confirmation}
                     onChange={this.handleChang}/>
-                <button type={'button'} onClick={this.register}>Sign Up</button>
+                <Button className='FormBtn' variant="outline-light" onClick={this.register}>Sign Up</Button>
             </form>
         </div>;
     }

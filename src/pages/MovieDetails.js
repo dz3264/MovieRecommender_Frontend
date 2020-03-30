@@ -6,6 +6,7 @@ import Table from "react-bootstrap/Table";
 import Rating from "react-rating";
 import star_full from '../asset/star_full.png';
 import star_empty from '../asset/star_empty.png';
+import axios from "axios";
 
 
 class MovieDetails extends React.Component{
@@ -43,10 +44,23 @@ class MovieDetails extends React.Component{
                         error
                     });
                 }
-            )
+            ).then(()=>{
+                let user = JSON.parse(localStorage.getItem('user')) ;
+                if (user){
+                    axios.post('/api/user/'+user.userid+'?movie='+this.props.movie['movieid'], {}, {withCredentials: true})
+                        .then(response => {
+                            console.log("updatehistory",response.data)
+
+                        }).catch(error => {
+                        console.log("error: ", error)
+                    });
+                }
+
+        })
     }
 
     render() {
+        console.log('show: ',this.props.details);
         let genres = [];
         for (var i = 0; i < this.props.details['genres'].length; i++) {
             let g = this.props.details['genres'][i];

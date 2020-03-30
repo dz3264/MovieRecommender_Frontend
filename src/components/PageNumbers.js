@@ -5,8 +5,8 @@ import Pagination from "react-bootstrap/Pagination";
 
 class PageNumbers extends React.Component{
     render() {
-        console.log("current page "+this.props.curr);
-        console.log("last page "+this.props.last);
+        //console.log("current page "+this.props.curr);
+        //console.log("last page "+this.props.last);
         let pageNums = [];
         if(this.props.last <= 10){
 

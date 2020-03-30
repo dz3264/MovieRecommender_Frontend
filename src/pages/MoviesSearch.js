@@ -18,6 +18,7 @@ class MoviesSearch extends React.Component{
             current_count: 0,
             total_count: 0,
             page_curr: 1,
+            keyword:'',
         };
 
         this.searchMovie = this.searchMovie.bind(this);
@@ -25,10 +26,18 @@ class MoviesSearch extends React.Component{
         this.changeSort = this.changeSort.bind(this);
         this.searchInput = this.changeSort.bind(this);
         this.changePage = this.changePage.bind(this);
+        this.changeKeyword = this.changeKeyword.bind(this);
+
     }
 
     changePage(p){
         this.searchMovie(p);
+    }
+
+    changeKeyword(e){
+        this.setState({
+            keyword:e.target.value
+        });
     }
 
     selectGenre(gShow, g){
@@ -52,7 +61,7 @@ class MoviesSearch extends React.Component{
     searchMovie(p) {
 
         //console.log('/api/movies?limit=60&page='+this.state.page_curr+'&sort='+this.state.sort+'&genre='+this.state.genre);
-        fetch('/api/movies?limit=60&page='+p+'&sort='+this.state.sort+'&genre='+this.state.genre)
+        fetch('/api/movies?limit=60&page='+p+'&sort='+this.state.sort+'&genre='+this.state.genre+'&key='+this.state.keyword)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -100,7 +109,9 @@ class MoviesSearch extends React.Component{
                 changeSort={this.changeSort}
                 selectGenre={this.selectGenre}
                 searchInput={this.searchInput}
-                searchMovie={this.searchMovie}/>
+                searchMovie={this.searchMovie}
+                changeKeyword={this.changeKeyword}
+                keyword={this.state.keyword}/>
 
             <div className='MovieList'>
                 {moviesList}

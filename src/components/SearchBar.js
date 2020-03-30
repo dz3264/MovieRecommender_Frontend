@@ -20,7 +20,7 @@ class SearchBar extends React.Component{
                 <div>
                     Sort By:
                 </div>
-                <Dropdown>
+                <Dropdown className="SearchInputArea">
                     <Dropdown.Toggle variant="light" id="dropdown-basic">
                         {this.props.sortShow}
                     </Dropdown.Toggle>
@@ -39,7 +39,7 @@ class SearchBar extends React.Component{
                 <div>
                     Select Genre:
                 </div>
-                <Dropdown>
+                <Dropdown className="SearchInputArea">
                     <Dropdown.Toggle variant="light" id="dropdown-basic">
                         {this.props.genreShow}
                     </Dropdown.Toggle>
@@ -70,16 +70,18 @@ class SearchBar extends React.Component{
                 </Dropdown>
 
             </div>
-            {/*
-            <div className="Input SearchDetail">
-                <Form>
-                    <Form.Group>
-                        <Form.Control type="email" placeholder="Search Movies with Keywords" />
+            <div className="SearchDetail">
+                <Form className="SearchInputArea">
+                    <Form.Group className="SearchInput">
+                        <Form.Control
+                            placeholder="Search Movies"
+                            onChange={this.props.changeKeyword}
+                            value={this.props.keyword}
+                        />
                     </Form.Group>
                 </Form>
 
             </div>
-            */}
 
 
             <div className="SearchBtn SearchDetail">

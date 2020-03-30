@@ -26,9 +26,18 @@
 
 .User{
     color: white;
+    padding-top: 10vh;
 }
 
 .LoginSignup{
     width: 80vw;
+    min-width: 500px;
+    height: 500px;
+}
 
+.LoginForms{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5vh;
 }
