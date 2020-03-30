@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Component.css';
 import MovieDetails from "../pages/MovieDetails";
+import Modal from "react-bootstrap/Modal";
 
 
 class MovieThumb extends React.Component{
@@ -8,7 +9,7 @@ class MovieThumb extends React.Component{
         super(props);
         this.state = {
             movie : this.props.movie,
-            showDetails: false,
+            show : false,
         };
 
         this.fetchPoster = this.fetchPoster.bind(this);
@@ -17,8 +18,8 @@ class MovieThumb extends React.Component{
     }
 
     setShow(s){
-        //console.log('show details');
-        this.setState({showDetails: s});
+        console.log('show details');
+        this.setState({show: s});
     }
 
     componentDidMount() {
@@ -53,25 +54,57 @@ class MovieThumb extends React.Component{
     }
 
     render() {
-
+        console.log('show outside', this.state.showDetails);
         //let background = 'http://image.tmdb.org/t/p/w200/'+this.state.movie['background'];
         let background = 'http://image.tmdb.org/t/p/w200/'+this.state.poster;
         //console.log(this.props.movie);
-        return <div
+        return <div>
+            <div
             className="Moviethumb"
             style={{backgroundImage: `url(${background})`}}
-            onClick={()=>this.setShow(true)} >
+            onClick={()=>this.setShow(true)}
+        >
 
-            <div className="MovieInfo" >
+            <div className="MovieInfo"  onClick={()=>this.setShow(true)}>
                 <div className="title">{this.props.movie['title'].split("(")[0]}</div>
                 <div className="release_date">{this.props.movie['release_date']}</div>
             </div>
-            {this.state.showDetails ?
+
+            {/*this.state.showDetails ?
                 <MovieDetails
-                movie={this.props.movie}
-                details={this.state.tmdbDetails}
-                poster={this.state.poster}/> : null}
+                    show={this.state.showDetails}
+                    movie={this.props.movie}
+                    details={this.state.tmdbDetails}
+                    close={this.setShow}
+                    poster={this.state.poster}/> : null*/}
         </div>;
+            <div className="MovieDetails">
+                <Modal
+                    show={this.state.show}
+                    onHide={() => {this.setShow(false)}
+                    }
+                    dialogClassName="modal-90w"
+                    aria-labelledby="example-custom-modal-styling-title"
+                    size='xl'
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.movie['title'].split("(")[0]}
+                        </Modal.Title>
+
+
+                    </Modal.Header>
+                    <Modal.Body>
+                        <MovieDetails
+                            show={this.state.showDetails}
+                            movie={this.props.movie}
+                            details={this.state.tmdbDetails}
+                            close={this.setShow}
+                            poster={this.state.poster}/>
+                    </Modal.Body>
+                </Modal>
+            </div>;
+        </div>
     }
 
 }
