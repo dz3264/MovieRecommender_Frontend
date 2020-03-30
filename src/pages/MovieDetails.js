@@ -47,6 +47,7 @@ class MovieDetails extends React.Component{
             ).then(()=>{
                 let user = JSON.parse(localStorage.getItem('user')) ;
                 if (user){
+                    console.log("New Explore");
                     axios.post('/api/user/'+user.userid+'?movie='+this.props.movie['movieid'], {}, {withCredentials: true})
                         .then(response => {
                             console.log("updatehistory",response.data)

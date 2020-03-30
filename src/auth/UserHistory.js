@@ -106,11 +106,13 @@ class UserHistory extends React.Component{
 
                 }
             ).then(()=>{
-
-            for (var i = 0; i < Object.keys(this.state.historys).length; i++){
-                let history = Object.keys(this.state.historys)[i];
-                this.fetchMovie(history,null,this.state.historys[history])
+            if (this.state.historys && Object.keys(this.state.historys).length !==0){
+                for (var i = 0; i < Object.keys(this.state.historys).length; i++){
+                    let history = Object.keys(this.state.historys)[i];
+                    this.fetchMovie(history,null,this.state.historys[history])
+                }
             }
+
         })
 
     }
