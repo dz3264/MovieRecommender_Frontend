@@ -5,7 +5,6 @@ import ListGroup from "react-bootstrap/ListGroup";
 import star_empty from "../asset/star_empty.png";
 import star_full from "../asset/star_full.png";
 import Rating from "react-rating";
-import MovieDetails from "../pages/MovieDetails";
 
 class UserHistory extends React.Component{
 
@@ -149,9 +148,10 @@ class UserHistory extends React.Component{
             user_ratings = <ListGroup className='scroll' variant="flush">
                 {user_ratings_details}
             </ListGroup>
+            console.log('user_ratings_details',user_ratings_details);
         }
         let user_history;
-        if(this.props.user.userhistory == null || this.props.user.userhistory === {}){
+        if(this.state.history_movies == null || this.state.history_movies === []){
             user_history = <div>Explore more movies!</div>
         }
         else{
@@ -169,6 +169,7 @@ class UserHistory extends React.Component{
             user_history = <ListGroup className='scroll' variant="flush">
                 {user_history_details}
             </ListGroup>
+            console.log('user_history',user_history);
         }
 
         return <div className='LoginForms'>

@@ -26,16 +26,20 @@ class MovieDetails extends React.Component{
         });
         let user = JSON.parse(localStorage.getItem('user')) ;
         if (user){
+            console.log('user rating post by /api/ratingby/'
+                +user.userid+' with movie id '
+                +this.props.movie['movieid']
+                +' and ratings '+e);
+
             axios.post('/api/ratingby/'+user.userid,
                 {
                     userid: user['userid'],
                     movieid: this.props.movie['movieid'],
                     rating: e,
                     timestamp: Date.now()
-                },
-                {withCredentials: true})
+                },{withCredentials: true})
                 .then(response => {
-                    console.log("updatehistory",response.data)
+                    console.log("changerating",response)
 
                 }).catch(error => {
                 console.log("error: ", error)
@@ -53,14 +57,15 @@ class MovieDetails extends React.Component{
     }
 
     componentDidMount() {
-        console.log('get rating');
+        console.log(this.props.movie);
         fetch("/api/rating/"+this.props.movie['movieid'])
             .then(res => res.json())
             .then(
                 (result) => {
-                    let rating = result.average ? Math.round(result.average * 10) / 10 : '--';
+                    console.log('fetch average',result.average);
+                    let averageRating = result.average ? Math.round(result.average * 10) / 10 : '--';
                     this.setState({
-                        averageRating: rating,
+                        averageRating: averageRating,
                     });
                     //console.log(result);
                 },
@@ -74,18 +79,17 @@ class MovieDetails extends React.Component{
             ).then(()=>{
                 let user = JSON.parse(localStorage.getItem('user')) ;
                 if (user){
-
-                    fetch("/api/ratingby/"+user['userid']+this.props.movie['movieid'])
+                    fetch("/api/ratingby/"+user['userid']+'?movie='+this.props.movie['movieid'])
                         .then(res => res.json())
                         .then(
                             (result) => {
-                                if(result.data){
+                                if(result.data.length!==0){
                                     console.log("Existing Rating");
-                                    let userRating = result.data['rating'];
+                                    let userRating = result.data[0]['rating'];
                                     this.setState({
                                         rating: userRating,
                                     });
-                                    //console.log(result);
+                                    console.log("User Rating",result);
                                 }
                             },
                             (error) => {
@@ -95,7 +99,7 @@ class MovieDetails extends React.Component{
                         );
                     axios.post('/api/user/'+user.userid+'?movie='+this.props.movie['movieid'], {}, {withCredentials: true})
                         .then(response => {
-                            console.log("updatehistory",response.data)
+                            console.log("updatehistory")
 
                         }).catch(error => {
                         console.log("error: ", error)
@@ -106,7 +110,6 @@ class MovieDetails extends React.Component{
     }
 
     render() {
-        console.log('show: ',this.state.show, this.props.show);
         let genres = [];
         for (var i = 0; i < this.props.details['genres'].length; i++) {
             let g = this.props.details['genres'][i];
@@ -172,13 +175,13 @@ class MovieDetails extends React.Component{
                         : null}
                     </div>
                     <div className='Rating'>
-                        <div>Your Rating: </div>
+                        <div style={{fontWeight:'bold',fontSize:'large'}}>Your Rating: </div>
                         <Rating
                             initialRating={this.state.rating}
                             fractions={2}
                             onClick={(e)=>{this.changeRating(e)}}
-                            emptySymbol={<img style={{width:'40px', height:'40px', margin:'5px'}} src={star_empty} className="icon" />}
-                            fullSymbol={<img style={{width:'40px', height:'40px',margin:'5px'}} src={star_full} className="icon" />}
+                            emptySymbol={<img style={{width:'30px', height:'30px', margin:'5px'}} src={star_empty} className="icon" />}
+                            fullSymbol={<img style={{width:'30px', height:'30px',margin:'5px'}} src={star_full} className="icon" />}
                         />
                     </div>
 

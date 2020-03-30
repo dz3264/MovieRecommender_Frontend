@@ -54,7 +54,6 @@ class MovieThumb extends React.Component{
     }
 
     render() {
-        console.log('show outside', this.state.showDetails);
         //let background = 'http://image.tmdb.org/t/p/w200/'+this.state.movie['background'];
         let background = 'http://image.tmdb.org/t/p/w200/'+this.state.poster;
         //console.log(this.props.movie);
@@ -77,7 +76,7 @@ class MovieThumb extends React.Component{
                     details={this.state.tmdbDetails}
                     close={this.setShow}
                     poster={this.state.poster}/> : null*/}
-        </div>;
+        </div>
             <div className="MovieDetails">
                 <Modal
                     show={this.state.show}
@@ -96,14 +95,12 @@ class MovieThumb extends React.Component{
                     </Modal.Header>
                     <Modal.Body>
                         <MovieDetails
-                            show={this.state.showDetails}
                             movie={this.props.movie}
                             details={this.state.tmdbDetails}
-                            close={this.setShow}
                             poster={this.state.poster}/>
                     </Modal.Body>
                 </Modal>
-            </div>;
+            </div>
         </div>
     }
 
