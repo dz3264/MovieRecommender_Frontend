@@ -7,7 +7,31 @@
   height: 40vmin;
   pointer-events: none;
 }
+*{
+    margin: 0px;
+    padding: 0px;
+  z-index:3;
+}
+#v1{
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    /*min-width: 100%;*/
+    /*min-height: 100%;*/
+    /*height: auto;*/
+    /*width: auto;*/
+    z-index:0;
+}
 
+Footer{
+  z-index:3;
+}
+/*source{*/
+    /*min-width: 100%;*/
+    /*min-height: 100%;*/
+    /*height: auto;*/
+    /*width: auto;*/
+/*}*/
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

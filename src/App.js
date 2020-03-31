@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+
 import './App.css';
 import Header from './components/Header';
 import MoviesRecommendation from "./pages/MoviesRecommendation";
@@ -9,6 +10,7 @@ import Footer from "./components/Footer";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from 'axios';
+import bgvideo from "./image/bgvideo.mp4";
 
 class App extends React.Component{
 
@@ -57,6 +59,9 @@ class App extends React.Component{
     render() {
 
         return <div className="App">
+            <video id="v1" autoPlay loop muted>
+                    <source src= {bgvideo} type="video/mp4"/>
+            </video>
             <Header/>
 
             <Tabs
