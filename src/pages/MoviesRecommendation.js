@@ -44,7 +44,7 @@ class MoviesRecommendation extends React.Component{
 
         let user = this.props.user;
         if(user && user['userid']){
-            console.log('fetch here with user :',this.props.user);
+            //console.log('fetch here with user :',this.props.user);
             fetch("/api/rec/"+user['userid'])
                 .then(res => res.json())
                 .then(
@@ -94,7 +94,7 @@ class MoviesRecommendation extends React.Component{
             })
         }
         else{
-            console.log('fetch without user');
+            //console.log('fetch without user');
             fetch("/api/movies?page="+p+"&sort=-popularity&limit=60")
                 .then(res => res.json())
                 .then(
@@ -129,8 +129,8 @@ class MoviesRecommendation extends React.Component{
     }
 
     render() {
-        console.log('user in recommendation page',this.props.user);
-        console.log('recommendation count',this.state.rec_count);
+        //console.log('user in recommendation page',this.props.user);
+        //console.log('recommendation count',this.state.rec_count);
         let moviesList = [];
         let pageNum = this.state.current_count !== 0 ? Math.ceil(this.state.total_count/60) : 0 ;
         for (var i = 0; i < this.state.rec_count; i++) {

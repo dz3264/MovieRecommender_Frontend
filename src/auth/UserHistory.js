@@ -120,7 +120,7 @@ class UserHistory extends React.Component{
 
 
     render() {
-
+        //console.log(this.state.history_movies);
         let user_ratings;
         if(this.state.ratings_total === 0){
             user_ratings = <div>You have not rate any movies.</div>
@@ -155,12 +155,13 @@ class UserHistory extends React.Component{
             let user_history_details = [];
             for (var j = 0; j < this.state.history_movies.length; j++) {
                 let history_movie = this.state.history_movies[j];
-
+                let viewDate = new Date(history_movie.time*1000);
                 user_history_details.push(
                     <ListGroup.Item>
                         <div>{history_movie.movie.title.split('(')[0]}</div>
                         <div>{history_movie.movie.genres}</div>
                         <div>{history_movie.movie.release_date}</div>
+                        <div>View on: {viewDate.toLocaleDateString()+"  "+viewDate.toLocaleTimeString([],{ hour12: false })}</div>
                     </ListGroup.Item>);
             }
             user_history = <ListGroup className='scroll' variant="flush">
