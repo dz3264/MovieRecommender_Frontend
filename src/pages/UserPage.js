@@ -16,7 +16,7 @@ class UserPage extends React.Component{
 
     render() {
 
-        console.log('fetchuser'+this.props.fetchuser);
+
 
         return <div className="User Page">
             {

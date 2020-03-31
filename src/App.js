@@ -18,20 +18,11 @@ class App extends React.Component{
         super();
         this.state = {
             loggedInStatus: JSON.parse(localStorage.getItem('loggedInStatus')) || false,
-            user: JSON.parse(localStorage.getItem('user')) || {},
+            user: JSON.parse(localStorage.getItem('user')),
         };
 
         this.userStatus = this.userStatus.bind(this);
     }
-
-    checkLoginStatue(){
-        axios.get("http://localhost:9090/logged_in",
-            {withCredentials: true})
-            .then(response => {
-                console.log("Logged in?")
-            }).catch(error => console.log(("check login error" + error)))
-    }
-
 
     userStatus(user){
         if(user){

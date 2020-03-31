@@ -60,7 +60,6 @@ class UserHistory extends React.Component{
 
     fetchUserInfo(){
 
-        //console.log('/api/movies?limit=60&page='+this.state.page_curr+'&sort='+this.state.sort+'&genre='+this.state.genre);
         fetch('/api/ratingby/'+this.props.user['userid'])
             .then(res => res.json())
             .then(
@@ -70,7 +69,6 @@ class UserHistory extends React.Component{
                         ratings_total:result.total_count,
                         ratings:result.data
                     });
-                    console.log(result.data)
                 },
                 (error) => {
                     console.log('error here: ',error);
@@ -94,7 +92,6 @@ class UserHistory extends React.Component{
                     this.setState({
                         historys:result.data.userhistory
                     });
-                    console.log(result.data)
                 },
                 (error) => {
                     console.log('error here: ',error);
@@ -148,7 +145,7 @@ class UserHistory extends React.Component{
             user_ratings = <ListGroup className='scroll' variant="flush">
                 {user_ratings_details}
             </ListGroup>
-            console.log('user_ratings_details',user_ratings_details);
+
         }
         let user_history;
         if(this.state.history_movies == null || this.state.history_movies === []){
@@ -158,7 +155,7 @@ class UserHistory extends React.Component{
             let user_history_details = [];
             for (var j = 0; j < this.state.history_movies.length; j++) {
                 let history_movie = this.state.history_movies[j];
-                console.log(history_movie.movie);
+
                 user_history_details.push(
                     <ListGroup.Item>
                         <div>{history_movie.movie.title.split('(')[0]}</div>
@@ -169,7 +166,7 @@ class UserHistory extends React.Component{
             user_history = <ListGroup className='scroll' variant="flush">
                 {user_history_details}
             </ListGroup>
-            console.log('user_history',user_history);
+
         }
 
         return <div className='LoginForms'>
