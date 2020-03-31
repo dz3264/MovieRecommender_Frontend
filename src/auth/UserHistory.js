@@ -157,10 +157,9 @@ class UserHistory extends React.Component{
                 let history_movie = this.state.history_movies[j];
                 let viewDate = new Date(history_movie.time*1000);
                 user_history_details.push(
-                    <ListGroup.Item>
+                    <ListGroup.Item className='listhistory'>
                         <div>{history_movie.movie.title.split('(')[0]}</div>
                         <div>{history_movie.movie.genres}</div>
-                        <div>{history_movie.movie.release_date}</div>
                         <div>View on: {viewDate.toLocaleDateString()+"  "+viewDate.toLocaleTimeString([],{ hour12: false })}</div>
                     </ListGroup.Item>);
             }
