@@ -5,7 +5,7 @@
 
     /*background-size: cover;*/
 
- min-height: 400px;
+ min-height: 800px;
 
 /*background-position: 50% 0px;*/
 
@@ -14,7 +14,10 @@
 
  }
 
-
+.slides{
+    position: relative;
+    top:20px;
+}
 .headerimg{
     transition: all 0.6s;
 }
@@ -23,8 +26,8 @@
   }
 .logo{
     position:absolute;
-    left:100px;
-    top:50px;
+    left:30px;
+    top:5px;
 }
 
 /********************************** Footer **********************************/
