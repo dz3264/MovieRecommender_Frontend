@@ -161,7 +161,7 @@
 }
 
 
-.Genre .dropdown-menu.show {
+.dropdown-menu.show {
     display: block;
     overflow-y: scroll;
     height: 110px;
